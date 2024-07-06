@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Circle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .circle {
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        transition: all 0.5s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="w-[80%] mx-auto mt-10">
+      <div class="w-full flex items-center justify-between">
+        <h2
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          1
+        </h2>
+        <h2
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          2
+        </h2>
+        <h2
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          3
+        </h2>
+        <h2
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          4
+        </h2>
+      </div>
+      <div class="mt-10 w-full flex items-center justify-between">
+        <h2
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          8
+        </h2>
+        <h2
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          7
+        </h2>
+        <h2
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          6
+        </h2>
+        <h2
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          5
+        </h2>
+      </div>
+      <div class="circle"></div>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const headings = document.querySelectorAll("h2");
+        const circle = document.querySelector(".circle");
+        const sequence = [0, 1, 2, 3, 7, 6, 5, 4];
+        let currentHeadingIndex = 0;
+
+        const moveCircle = () => {
+          const currentHeading = headings[sequence[currentHeadingIndex]];
+          const rect = currentHeading.getBoundingClientRect();
+
+          // Update circle position
+          circle.style.top = `${rect.top + window.scrollY}px`;
+          circle.style.left = `${rect.left + window.scrollX}px`; // Adjust left position as needed
+
+          // Reset all headings color
+          headings.forEach((h) => h.classList.remove("bg-blue-500"));
+
+          // Change current heading color
+          currentHeading.classList.add("bg-blue-500");
+
+          // Update index for next heading
+          currentHeadingIndex = (currentHeadingIndex + 1) % sequence.length;
+        };
+
+        // Initial move
+        moveCircle();
+
+        // Move circle every 2 seconds
+        setInterval(moveCircle, 2000);
+      });
+    </script>
+  </body>
+</html>
