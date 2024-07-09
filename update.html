@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Circle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .circle {
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        transition: all 0.5s ease;
+      }
+      .path-line {
+        stroke: green;
+        stroke-width: 2;
+        fill: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="w-[80%] mx-auto mt-10 relative">
+      <!-- SVG with paths -->
+      <svg
+        class="absolute w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none">
+        <path class="path-line" d="M10 10 L30 10" id="path1" />
+        <path class="path-line" d="M30 10 L50 30" id="path2" />
+        <path class="path-line" d="M50 30 L70 30" id="path3" />
+        <path class="path-line" d="M70 30 L70 50" id="path4" />
+        <path class="path-line" d="M70 50 L70 70" id="path5" />
+        <path class="path-line" d="M70 70 L50 70" id="path6" />
+        <path class="path-line" d="M50 70 L30 70" id="path7" />
+        <path class="path-line" d="M30 70 L10 70" id="path8" />
+      </svg>
+      <div class="w-full flex items-center justify-between">
+        <h2
+          class="work_p w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          1
+        </h2>
+        <h2
+          class="work_p w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          2
+        </h2>
+        <h2
+          class="work_p w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          3
+        </h2>
+        <h2
+          class="work_p w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          4
+        </h2>
+      </div>
+      <div class="mt-10 w-full flex items-center justify-between">
+        <h2
+          class="work_p w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          8
+        </h2>
+        <h2
+          class="work_p w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          7
+        </h2>
+        <h2
+          class="work_p w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          6
+        </h2>
+        <h2
+          class="work_p w-10 h-10 flex items-center justify-center rounded-xl text-center bg-red-500 text-white text-2xl font-bold z-10">
+          5
+        </h2>
+      </div>
+      <div class="circle"></div>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const headings = document.querySelectorAll(".work_p");
+        const circle = document.querySelector(".circle");
+        const sequence = [0, 1, 2, 3, 7, 6, 5, 4];
+        let currentHeadingIndex = 0;
+
+        const moveCircle = () => {
+          const currentHeading = headings[sequence[currentHeadingIndex]];
+          const rect = currentHeading.getBoundingClientRect();
+          let top = rect.top + window.scrollY;
+          let left = rect.left + window.scrollX;
+
+          // Adjust positions based on the phase
+          if (sequence[currentHeadingIndex] <= 3) {
+            // Center positions for 1 to 4
+            top += rect.height / 2 - circle.offsetHeight / 2;
+            left += rect.width / 2 - circle.offsetWidth / 2;
+          } else if (sequence[currentHeadingIndex] === 4) {
+            // Border position from 4 to 5
+            top += rect.height;
+            left += rect.width;
+          } else if (sequence[currentHeadingIndex] >= 5) {
+            // Center positions for 5 to 8
+            top += rect.height / 2 - circle.offsetHeight / 2;
+            left += rect.width / 2 - circle.offsetWidth / 2;
+          }
+
+          // Update circle position
+          circle.style.top = `${top}px`;
+          circle.style.left = `${left}px`;
+
+          // Reset all headings color
+          headings.forEach((h) => h.classList.remove("bg-blue-500"));
+
+          // Change current heading color
+          currentHeading.classList.add("bg-blue-500");
+
+          // Update index for next heading
+          currentHeadingIndex = (currentHeadingIndex + 1) % sequence.length;
+        };
+
+        // Initial move
+        moveCircle();
+
+        // Move circle every 2 seconds
+        setInterval(moveCircle, 2000);
+      });
+    </script>
+  </body>
+</html>

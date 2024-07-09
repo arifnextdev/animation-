@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Circle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .circle {
+        width: 30px;
+        height: 30px;
+        background-color: rgb(59 130 246);
+        border-radius: 50%;
+        position: absolute;
+        transition: all 3s ease;
+        z-index: 5;
+      }
+
+      .border-animate {
+        height: 100px;
+        width: 200px;
+        background: linear-gradient(90deg, blue 50%, transparent 50%),
+          linear-gradient(90deg, blue 50%, transparent 50%),
+          linear-gradient(0deg, blue 50%, transparent 50%),
+          linear-gradient(0deg, blue 50%, transparent 50%);
+        background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+        background-size: 15px 4px, 15px 4px, 4px 15px, 4px 15px;
+        background-position: 0px 0px, 200px 100px, 0px 100px, 200px 0px;
+        padding: 10px;
+        animation: border-dance 4s infinite linear;
+      }
+
+      .border-top {
+        height: 0px; /* Set height to 0 to make the div itself invisible */
+        width: 100%;
+        /* Add a dashed top border */
+        background: linear-gradient(90deg, blue 50%, transparent 50%);
+        background-repeat: repeat-x;
+        background-size: 15px 4px;
+        background-position: 0px 0px;
+        padding-top: 4px; /* Adjust padding to make space for the border */
+        animation: border-dance 4s infinite linear;
+      }
+      @keyframes border-dance {
+        0% {
+          background-position: 0px 0px;
+        }
+        100% {
+          background-position: 300px 0px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="">
+      <div class="w-full grid grid-cols-4 gap-10">
+        <div class="z-10 flex flex-col justify-center items-center relative">
+          <h5
+            class="work_p w-20 h-20 flex items-center justify-center rounded-full text-center bg-blue-500 text-white text-2xl font-bold z-10 shadow-xl">
+            1
+          </h5>
+          <h3 class="text-md font-medium tracking-wide">Planning</h3>
+          <div class="absolute top-2/2 left-1/2 -translate-y-1/2 w-full z-[2]">
+            <div class="flex justify-center items-center">
+              <div class="border-top"></div>
+              <span
+                class="w-0 h-0 border-t-[10px] border-t-transparent border-l-[25px] border-l-blue-500 border-b-[10px] border-b-transparent"></span>
+            </div>
+          </div>
+        </div>
+        <div class="z-10 flex flex-col justify-center items-center relative">
+          <h5
+            class="work_p w-20 h-20 flex items-center justify-center rounded-full text-center bg-blue-500 text-white text-2xl font-bold z-10 shadow-xl">
+            2
+          </h5>
+          <h3 class="text-md font-medium tracking-wide">Design</h3>
+          <div class="absolute top-2/2 left-1/2 -translate-y-1/2 w-full z-[2]">
+            <div class="flex justify-center items-center">
+              <span class="border-2 border-blue-500 w-full"></span>
+              <span
+                class="w-0 h-0 border-t-[10px] border-t-transparent border-l-[25px] border-l-blue-500 border-b-[10px] border-b-transparent"></span>
+            </div>
+          </div>
+        </div>
+        <div class="z-10 flex flex-col justify-center items-center relative">
+          <h5
+            class="work_p w-20 h-20 flex items-center justify-center rounded-full text-center bg-blue-500 text-white text-2xl font-bold z-10 shadow-xl">
+            3
+          </h5>
+          <h3 class="text-md font-medium tracking-wide">Development</h3>
+          <div class="absolute top-2/2 left-1/2 -translate-y-1/2 w-full z-[2]">
+            <div class="flex justify-center items-center">
+              <span class="border-2 border-blue-500 w-full"></span>
+              <span
+                class="w-0 h-0 border-t-[10px] border-t-transparent border-l-[25px] border-l-blue-500 border-b-[10px] border-b-transparent"></span>
+            </div>
+          </div>
+        </div>
+        <div class="z-10 flex flex-col justify-center items-center">
+          <h5
+            class="work_p w-20 h-20 flex items-center justify-center rounded-full text-center bg-blue-500 text-white text-2xl font-bold z-10 shadow-xl">
+            4
+          </h5>
+          <h3 class="text-md font-medium tracking-wide">Testing</h3>
+        </div>
+      </div>
+      <div class="absolute top-[4.5rem] right-[10rem] z-[2] rotate-90">
+        <div class="flex justify-center items-center">
+          <span class="border-t-2 border-b-2 border-blue-500 w-[100px]"></span>
+
+          <span
+            class="w-0 h-0 border-t-[10px] border-t-transparent border-l-[25px] border-l-blue-500 border-b-[10px] border-b-transparent"></span>
+        </div>
+      </div>
+      <div class="mt-10 w-full grid grid-cols-4 gap-10">
+        <div class="z-10 flex flex-col justify-center items-center relative">
+          <h5
+            class="work_p w-20 h-20 flex items-center justify-center rounded-full text-center bg-blue-500 text-white text-2xl font-bold z-10 shadow-xl">
+            5
+          </h5>
+          <h3 class="text-md font-medium tracking-wide">Deployment</h3>
+          <div
+            class="absolute ml-10 top-2/2 left-1/2 -translate-y-1/2 w-full z-[2]">
+            <div class="flex justify-center items-center">
+              <span
+                class="w-0 h-0 border-t-[10px] border-t-transparent border-r-[25px] border-r-blue-500 border-b-[10px] border-b-transparent"></span>
+              <span class="border-2 border-blue-500 w-full"></span>
+            </div>
+          </div>
+        </div>
+        <div class="z-10 flex flex-col justify-center items-center relative">
+          <h5
+            class="work_p w-20 h-20 flex items-center justify-center rounded-full text-center bg-blue-500 text-white text-2xl font-bold z-10 shadow-xl">
+            6
+          </h5>
+          <h3 class="text-md font-medium tracking-wide">Maintenance</h3>
+          <div
+            class="absolute ml-10 top-2/2 left-1/2 -translate-y-1/2 w-full z-[2]">
+            <div class="flex justify-center items-center">
+              <span
+                class="w-0 h-0 border-t-[10px] border-t-transparent border-r-[25px] border-r-blue-500 border-b-[10px] border-b-transparent"></span>
+              <span class="border-2 border-blue-500 w-full"></span>
+            </div>
+          </div>
+        </div>
+        <div class="z-10 flex flex-col justify-center items-center relative">
+          <h5
+            class="work_p w-20 h-20 flex items-center justify-center rounded-full text-center bg-blue-500 text-white text-2xl font-bold z-10 shadow-xl">
+            7
+          </h5>
+          <h3 class="text-md font-medium tracking-wide">Review</h3>
+          <div
+            class="absolute ml-10 top-2/2 left-1/2 -translate-y-1/2 w-full z-[2]">
+            <div class="flex justify-center items-center">
+              <span
+                class="w-0 h-0 border-t-[10px] border-t-transparent border-r-[25px] border-r-blue-500 border-b-[10px] border-b-transparent"></span>
+              <span class="border-2 border-blue-500 w-full"></span>
+            </div>
+          </div>
+        </div>
+        <div class="z-10 flex flex-col justify-center items-center">
+          <h5
+            class="work_p w-20 h-20 flex items-center justify-center rounded-full text-center bg-blue-500 text-white text-2xl font-bold z-10 shadow-xl">
+            8
+          </h5>
+          <h3 class="text-md font-medium tracking-wide">Retirement</h3>
+        </div>
+      </div>
+      <div class="circle mt-6 ml-5"></div>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const headings = document.querySelectorAll(".work_p");
+        const circle = document.querySelector(".circle");
+        const sequence = [0, 1, 2, 3, 7, 6, 5, 4];
+        let currentHeadingIndex = 0;
+
+        const moveCircle = () => {
+          const currentHeading = headings[sequence[currentHeadingIndex]];
+          const rect = currentHeading.getBoundingClientRect();
+
+          // Update circle position
+          circle.style.top = `${rect.top + window.scrollY}px`;
+          circle.style.left = `${rect.left + window.scrollX}px`; // Adjust left position as needed
+
+          // Reset all headings color
+          headings.forEach((h) => h.classList.remove("border-animate"));
+
+          // Change current heading color
+          currentHeading.classList.add("border-animate");
+
+          // Update index for next heading
+          currentHeadingIndex = (currentHeadingIndex + 1) % sequence.length;
+        };
+
+        // Initial move
+        moveCircle();
+
+        // Move circle every 2 seconds
+        setInterval(moveCircle, 3000);
+      });
+    </script>
+  </body>
+</html>
